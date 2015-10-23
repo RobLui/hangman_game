@@ -4,8 +4,11 @@ using System.Collections.Generic;
 
 public class a_controller : MonoBehaviour {
 
+    //toegang tot het model vanuit anderen die via de controller waardes uit het model nodig hebben
     public static a_model AccessToModel = new a_model();
+    //toegang tot de controller vanuit andere klasses
     public static a_controller AccessToController = new a_controller();
+
     private a_model model = a_controller.AccessToModel;
 
     public int PickWord()
@@ -20,6 +23,7 @@ public class a_controller : MonoBehaviour {
         bool charExists = false;
         for (int x = 0; x < model.Chosen_word.Length; x++)
         {
+            //ff zien of ik hier niet gwn accestomodel kan gebruiken
             if (model.Chosen_word[x] == a)
             {
                 charExists = true;
@@ -34,17 +38,25 @@ public class a_controller : MonoBehaviour {
         }
     }
 
+
+    //Voeg score toe
     public void AddScore()
     {
             AccessToModel.Score++;
             Debug.Log(AccessToModel.Score.ToString());
     }
 
+
+    //Stop het spel
     public void EndGame()
     {
         if (a_controller.AccessToModel.Still_alive == false)
         {
+            //VOORLOPIG laat een nieuw spel starten(door een scene te laden)
             Application.LoadLevel("scene-one");
         }
     }
+
+
+
 }
