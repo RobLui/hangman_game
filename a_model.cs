@@ -98,10 +98,17 @@ public class a_model : MonoBehaviour {
         }
     }
 
-    
+    private float time = 60;
+    public float Time
+    {
+        get
+        {
+            return time;
+        }
 
-    //public int ChosenWordFunction()
-    //{
-    //   return a_controller.AccessToController.PickWord();
-    //}
+        set
+        {
+            time = value;
+        }
+    }
 }

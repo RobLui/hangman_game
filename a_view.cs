@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class a_view : MonoBehaviour {
 
     private a_model a = a_controller.AccessToModel;
-    private float time = 60;
 
     // Use this for initialization
     void Start ()
@@ -21,15 +20,15 @@ public class a_view : MonoBehaviour {
     void Update()
     {
         //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
-        time -= Time.deltaTime;
+        a_controller.AccessToModel.Time -= Time.deltaTime;
     }
 
     private void OnGUI()
     {
-        if (time > 0)
+        if (a_controller.AccessToModel.Time > 0)
         {
         //Show de tijd die je nog over hebt in GUI (unity scherm)
-            GUI.Label(new Rect(100, 100, 100, 100), "Je hebt nog " + (int)time + " seconden");
+            GUI.Label(new Rect(100, 100, 100, 100), "Je hebt nog " + (int)a_controller.AccessToModel.Time + " seconden");
         }
         else
         {

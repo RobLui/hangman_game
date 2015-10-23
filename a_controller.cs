@@ -9,8 +9,6 @@ public class a_controller : MonoBehaviour {
     //toegang tot de controller vanuit andere klasses
     public static a_controller AccessToController = new a_controller();
 
-    private a_model model = a_controller.AccessToModel;
-
     public int PickWord()
     {
         int pick_random_nbr = 0; 
@@ -21,14 +19,14 @@ public class a_controller : MonoBehaviour {
     public void checkCharacter(char a)
     {
         bool charExists = false;
-        for (int x = 0; x < model.Chosen_word.Length; x++)
+        for (int x = 0; x < AccessToModel.Chosen_word.Length; x++)
         {
             //ff zien of ik hier niet gwn accestomodel kan gebruiken
-            if (model.Chosen_word[x] == a)
+            if (AccessToModel.Chosen_word[x] == a)
             {
                 charExists = true;
-                string temp = model.GuessedWord.Substring(0, x);
-                model.GuessedWord = temp + a.ToString() + model.GuessedWord.Substring(x + 1, model.GuessedWord.Length - x - 1);
+                string temp = AccessToModel.GuessedWord.Substring(0, x);
+                AccessToModel.GuessedWord = temp + a.ToString() + AccessToModel.GuessedWord.Substring(x + 1, AccessToModel.GuessedWord.Length - x - 1);
             }
         }
         if (!charExists)
@@ -37,7 +35,6 @@ public class a_controller : MonoBehaviour {
             Debug.Log(a_controller.AccessToModel.Lives);
         }
     }
-
 
     //Voeg score toe
     public void AddScore()
