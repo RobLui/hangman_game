@@ -15,6 +15,8 @@ public class a_view : MonoBehaviour {
 
     private void OnGUI()
     {
+
+        //********************************** TIJD **************************************//
         //Als de tijd groter is dan 0 dan..
         if (a_controller.AccessToModel.Time > 0)
         {
@@ -31,6 +33,8 @@ public class a_view : MonoBehaviour {
             a_controller.AccessToController.EndGame();
         }
 
+        //********************************** POSITIE BOXEN **************************************//
+
         //Positie van de Positie waar de streepjes van het te raden woord in moeten komen
         Rect BoxPosition = new Rect(500, 50, 200, 50);
         GUI.Box(BoxPosition, a.GuessedWord);
@@ -42,6 +46,8 @@ public class a_view : MonoBehaviour {
         //Positie van de drukknop
         Rect buttonPosition = new Rect(500, 200, 200, 100);
 
+        //********************************** VERGELIJKING **************************************//
+
         //Als het gekozen woord volledig gelijk is aan het te raden woord dan..
         if (a.GuessedWord == a.Chosen_word)
         {
@@ -51,15 +57,18 @@ public class a_view : MonoBehaviour {
             a_controller.AccessToController.GenerateRandomWord();
         }
 
+        //********************************** BUTTON **************************************//
+
         //Als er op de knop wordt gedrukt dan... (Op de knop staat "Probeer")
         if (GUI.Button(buttonPosition, "Probeer"))
         {
+            a_controller.AccessToController.CheckForLives();
             //Enkel bij invoer van 1 karakter toelating geven om te spelen
             if (a.UserInput.Length == 0 || a.UserInput.Length > 1 )
             {
-            //Bij overtreden invoerregel van 1, deze error te geven ----DIT MOET NOG AANGEPAST WORDEN----
-                Debug.Log("Not allowed");
+                //Spawnt een foto die hangende man laat zien
                 a_controller.AccessToController.SpawnFoto();
+                a_controller.AccessToModel.Lives--;
             }
             else
             {
@@ -67,9 +76,13 @@ public class a_view : MonoBehaviour {
                 a_controller.AccessToController.checkCharacter(a.UserInput[0]);
                 //Leegmaken van de user input na elke invoer van een letter
                 a.UserInput = GUI.TextField(textFieldPosition,"");
-                //VOORLOPIGE message die zegt dat de invoer toegelaten is ----- KAN LATER VERWIJDERD WORDEN ------ 
-                Debug.Log("Allowed");
+
             }
         }
     }
+
+    //Bij overtreden invoerregel van 1, deze error te geven op het scherm ----COMMENTAAR----
+    //Debug.Log("Not allowed");
+    //Message die zegt dat de invoer toegelaten is ----COMMENTAAR----
+    //Debug.Log("Allowed");
 }
