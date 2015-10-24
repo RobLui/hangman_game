@@ -9,8 +9,6 @@ public class a_controller : MonoBehaviour {
     //Toegang tot de controller vanuit andere klasses
     public static a_controller AccessToController = new a_controller();
 
-    public static a_view AccesToView = new a_view();
-
     // Initialisatie
     void Start()
     {
@@ -29,6 +27,7 @@ public class a_controller : MonoBehaviour {
         Debug.Log(AccessToModel.Chosen_word);
     }
 
+    //Genereer een random woord op basis van de lijst grootte
     public int PickWord()
     {
         //Beginwaarde op 0
@@ -65,11 +64,11 @@ public class a_controller : MonoBehaviour {
             //Verwijder een leven
             AccessToModel.Lives--;
 
-            //Show een foto dat iem ophangt
-            a_controller.AccessToController.SpawnFoto();
-
             //Laat ----VOORLOPIG---- de levens zien die nog over zijn in de console ----DIT MOET NOG AANGEPAST WORDEN----
             Debug.Log(AccessToModel.Lives);
+
+            //Laat nieuw deel van de man zien
+            a_controller.AccessToController.SpawnFoto();
         }
     }
 
@@ -93,9 +92,7 @@ public class a_controller : MonoBehaviour {
         }
     }
 
-    //Als er iets fout is moet er een nieuw lichaamsdeel verschijnen ----DIT NOG LATEN VERSCHIJNEN-----
-    //ipv in Unity foto's te laten ophalen , puur door code proberen
-
+    //Spawn foto van hangende man
     public void SpawnFoto()
     {
         switch (a_controller.AccessToModel.Counter)
@@ -123,5 +120,15 @@ public class a_controller : MonoBehaviour {
                 break;
         }
         AccessToModel.Counter++;
+    }
+
+    //Check of er nog voldoende levens zijn om verder te spelen
+    public void CheckForLives()
+    {
+        AccessToModel.Still_alive = false;
+        if (AccessToModel.Lives < 0)
+        {
+            EndGame();
+        }
     }
 }

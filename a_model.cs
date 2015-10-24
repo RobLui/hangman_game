@@ -56,7 +56,7 @@ public class a_model : MonoBehaviour {
         }
     }
 
-    private int lives = 30;
+    private int lives = 6;
     public int Lives
     {
         get
