@@ -6,28 +6,12 @@ public class a_view : MonoBehaviour {
 
     private a_model a = a_controller.AccessToModel;
 
-    // Use this for initialization
-    void Start ()
-    {
-        //Waarde van Chosen_word = random woord
-        a.Chosen_word = a_model.wordList[a_controller.AccessToController.PickWord()];
-        //Guessed word (aantal streepjes voor het verborgen woord) wordt gelijk gezet aan het random woord
-        a.GuessedWord = new string("-"[0], a.Chosen_word.Length);
-        //Spiekbriefje voor in de console te kunnen zien wat het woord dat geraden moet worden is
-        Debug.Log(a.Chosen_word);
-    }
-
-    void Update()
-    {
-        //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
-        a_controller.AccessToModel.Time -= Time.deltaTime;
-    }
-
     private void OnGUI()
     {
+        //Als de tijd groter is dan 0 dan..
         if (a_controller.AccessToModel.Time > 0)
         {
-        //Show de tijd die je nog over hebt in GUI (unity scherm)
+        //show de tijd die je nog over hebt in GUI (unity scherm)
             GUI.Label(new Rect(100, 100, 100, 100), "Je hebt nog " + (int)a_controller.AccessToModel.Time + " seconden");
         }
         else
@@ -56,9 +40,8 @@ public class a_view : MonoBehaviour {
         {
             //Voeg score toe
             a_controller.AccessToController.AddScore();
-            //Genereer een nieuw random woord (onderste 2 regels)
-            a.Chosen_word = a_model.wordList[a_controller.AccessToController.PickWord()];
-            a.GuessedWord = new string("-"[0], a.Chosen_word.Length);
+            //Genereer een nieuw random woord
+            a_controller.AccessToController.GenerateRandomWord();
         }
 
         //Als er op de knop wordt gedrukt dan... (Op de knop staat "Probeer")
@@ -67,7 +50,7 @@ public class a_view : MonoBehaviour {
             //Enkel bij invoer van 1 karakter toelating geven om te spelen
             if (a.UserInput.Length == 0 || a.UserInput.Length > 1 )
             {
-            //Bij overtreden invoerregel van 1, VOORLOPIG ------- AAN TE PASSEN OP SCHERM ----- deze error te geven
+            //Bij overtreden invoerregel van 1, deze error te geven ----DIT MOET NOG AANGEPAST WORDEN----
                 Debug.Log("Not allowed");
             }
             else
@@ -76,7 +59,7 @@ public class a_view : MonoBehaviour {
                 a_controller.AccessToController.checkCharacter(a.UserInput[0]);
                 //Leegmaken van de user input na elke invoer van een letter
                 a.UserInput = GUI.TextField(textFieldPosition,"");
-                //VOORLOPIGE message die zegt dat de invoer toegelaten is ----- KAN VERWIJDERT WORDEN ------ later
+                //VOORLOPIGE message die zegt dat de invoer toegelaten is ----- KAN LATER VERWIJDERD WORDEN ------ 
                 Debug.Log("Allowed");
             }
         }
