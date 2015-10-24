@@ -64,6 +64,10 @@ public class a_controller : MonoBehaviour {
         {
             //Verwijder een leven
             AccessToModel.Lives--;
+
+            //Show een foto dat iem ophangt
+            a_controller.AccessToController.SpawnFoto();
+
             //Laat ----VOORLOPIG---- de levens zien die nog over zijn in de console ----DIT MOET NOG AANGEPAST WORDEN----
             Debug.Log(AccessToModel.Lives);
         }
