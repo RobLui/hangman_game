@@ -13,21 +13,7 @@ public class a_controller : MonoBehaviour {
     void Start()
     {
         //Bij het starten van het spel creëer een woord om te raden
-<<<<<<< HEAD
         GenerateRandomWord();
-=======
-        a_controller.AccessToController.GenerateRandomWord();
->>>>>>> 3f8468330cc43fdfceb795367c9d23609d64b211
-    }
-
-    void Update()
-    {
-        //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
-<<<<<<< HEAD
-        AccessToModel.Time -= Time.deltaTime;
-=======
-        a_controller.AccessToModel.Time -= Time.deltaTime;
->>>>>>> 3f8468330cc43fdfceb795367c9d23609d64b211
     }
 
     //Genereer een random woord om te raden
@@ -75,15 +61,9 @@ public class a_controller : MonoBehaviour {
         if (!charExists)
         {
             //Verwijder een leven
-<<<<<<< HEAD
             AccessToModel.Lives--;
             //Laat ----VOORLOPIG---- de levens zien die nog over zijn in de console ----DIT MOET NOG AANGEPAST WORDEN----
             Debug.Log(AccessToModel.Lives);
-=======
-            a_controller.AccessToModel.Lives--;
-            //Laat ----VOORLOPIG---- de levens zien die nog over zijn in de console ----DIT MOET NOG AANGEPAST WORDEN----
-            Debug.Log(a_controller.AccessToModel.Lives);
->>>>>>> 3f8468330cc43fdfceb795367c9d23609d64b211
         }
     }
 
@@ -100,14 +80,14 @@ public class a_controller : MonoBehaviour {
     public void EndGame()
     {
         //Als de bool still_alive false is dan ... 
-<<<<<<< HEAD
         if (AccessToModel.Still_alive == false)
-=======
-        if (a_controller.AccessToModel.Still_alive == false)
->>>>>>> 3f8468330cc43fdfceb795367c9d23609d64b211
         {
             //laat een nieuw spel starten(door een scene te laden) ----DIT MOET NOG AANGEPAST WORDEN----
             Application.LoadLevel("scene-one");
         }
     }
+
+    //Als er iets fout is moet er een nieuw lichaamsdeel verschijnen ----DIT NOG LATEN VERSCHIJNEN-----
+    //ipv in Unity foto's te laten ophalen , puur door code proberen
+
 }

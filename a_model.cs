@@ -97,7 +97,7 @@ public class a_model : MonoBehaviour {
             still_alive = value;
         }
     }
-
+    
     private float time = 60;
     public float Time
     {

@@ -6,13 +6,18 @@ public class a_view : MonoBehaviour {
 
     private a_model a = a_controller.AccessToModel;
 
+    void Update()
+    {
+        //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
+        a_controller.AccessToModel.Time -= Time.deltaTime;
+    }
     private void OnGUI()
     {
         //Als de tijd groter is dan 0 dan..
         if (a_controller.AccessToModel.Time > 0)
         {
         //show de tijd die je nog over hebt in GUI (unity scherm)
-            GUI.Label(new Rect(100, 100, 100, 100), "Je hebt nog " + (int)a_controller.AccessToModel.Time + " seconden");
+            GUI.Label(new Rect(100, 100, 200, 200), "Je hebt nog " + (int)a_controller.AccessToModel.Time + " seconden");
         }
         else
         {
