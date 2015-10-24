@@ -111,4 +111,18 @@ public class a_model : MonoBehaviour {
             time = value;
         }
     }
+
+    private int counter = 0;
+    public int Counter
+    {
+        get
+        {
+            return counter;
+        }
+
+        set
+        {
+            counter = value;
+        }
+    }
 }

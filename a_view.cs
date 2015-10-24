@@ -6,11 +6,13 @@ public class a_view : MonoBehaviour {
 
     private a_model a = a_controller.AccessToModel;
 
+
     void Update()
     {
         //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
         a_controller.AccessToModel.Time -= Time.deltaTime;
     }
+
     private void OnGUI()
     {
         //Als de tijd groter is dan 0 dan..
@@ -57,6 +59,7 @@ public class a_view : MonoBehaviour {
             {
             //Bij overtreden invoerregel van 1, deze error te geven ----DIT MOET NOG AANGEPAST WORDEN----
                 Debug.Log("Not allowed");
+                a_controller.AccessToController.SpawnFoto();
             }
             else
             {

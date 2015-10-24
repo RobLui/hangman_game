@@ -9,6 +9,8 @@ public class a_controller : MonoBehaviour {
     //Toegang tot de controller vanuit andere klasses
     public static a_controller AccessToController = new a_controller();
 
+    public static a_view AccesToView = new a_view();
+
     // Initialisatie
     void Start()
     {
@@ -90,4 +92,32 @@ public class a_controller : MonoBehaviour {
     //Als er iets fout is moet er een nieuw lichaamsdeel verschijnen ----DIT NOG LATEN VERSCHIJNEN-----
     //ipv in Unity foto's te laten ophalen , puur door code proberen
 
+    public void SpawnFoto()
+    {
+        switch (a_controller.AccessToModel.Counter)
+        {
+            case 0:
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("hung1");
+                break;
+            case 1:
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("hung2");
+                break;
+            case 2:
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("shirt");
+                break;
+            case 3:
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("rightarm");
+                break;
+            case 4:
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftarm");
+                break;
+            case 5:
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("rightleg");
+                break;
+            case 6:
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
+                break;
+        }
+        AccessToModel.Counter++;
+    }
 }
