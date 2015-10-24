@@ -5,7 +5,13 @@ using System.Collections.Generic;
 public class a_view : MonoBehaviour {
 
     private a_model a = a_controller.AccessToModel;
+    private GUIStyle fontSize;
 
+    void Start()
+    {
+        fontSize = new GUIStyle();
+        fontSize.fontSize = 40;
+    }
 
     void Update()
     {
@@ -37,8 +43,8 @@ public class a_view : MonoBehaviour {
 
         //Positie van de Positie waar de streepjes van het te raden woord in moeten komen
         Rect BoxPosition = new Rect(500, 50, 200, 50);
-        GUI.Box(BoxPosition, a.GuessedWord);
-
+        GUI.Box(BoxPosition, a.GuessedWord, fontSize);
+        
         //Positie van de textField, input die van de user kan komen
         Rect textFieldPosition = new Rect(500, 100, 200, 100);
         a.UserInput = GUI.TextField(textFieldPosition, a.UserInput);
@@ -81,8 +87,11 @@ public class a_view : MonoBehaviour {
         }
     }
 
+<<<<<<< HEAD
     //Bij overtreden invoerregel van 1, deze error te geven op het scherm ----COMMENTAAR----
     //Debug.Log("Not allowed");
     //Message die zegt dat de invoer toegelaten is ----COMMENTAAR----
     //Debug.Log("Allowed");
+=======
+>>>>>>> 9ccab8dee369dbfefdfbd9d6fa73d8d43339be53
 }

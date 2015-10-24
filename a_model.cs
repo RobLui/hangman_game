@@ -6,12 +6,15 @@ public class a_model : MonoBehaviour {
 
     public static List<string> wordList = new List<string>()
     {
+        "pieter",
         "aap",
         "banaan",
         "appel",
         "naam",
         "index",
-        "controle"
+        "controle",
+        "robbert",
+        "game"
     };
 
     private string userInput = "";
@@ -125,4 +128,5 @@ public class a_model : MonoBehaviour {
             counter = value;
         }
     }
+
 }

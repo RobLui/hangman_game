@@ -17,7 +17,7 @@ public class a_controller : MonoBehaviour {
     }
 
     //Genereer een random woord om te raden
-    public void GenerateRandomWord()
+    public void GenerateRandomWord() //  ----HIER MAG LATER NOG IETS VERWIJDERD WORDEN (Debug functie)----
     {
         //Waarde van Chosen_word = random woord
         AccessToModel.Chosen_word = a_model.wordList[PickWord()];
@@ -73,7 +73,7 @@ public class a_controller : MonoBehaviour {
     }
 
     //Voeg score toe
-    public void AddScore()
+    public void AddScore() // ----DIT MOET NOG AANGEPAST WORDEN----
     {
             //Tel een punt bij
             AccessToModel.Score++;
@@ -82,7 +82,7 @@ public class a_controller : MonoBehaviour {
     }
 
     //Stop het spel
-    public void EndGame()
+    public void EndGame() //----DIT MOET NOG AANGEPAST WORDEN----
     {
         //Als de bool still_alive false is dan ... 
         if (AccessToModel.Still_alive == false)
