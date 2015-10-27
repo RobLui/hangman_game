@@ -6,7 +6,6 @@ public class a_model : MonoBehaviour {
 
     public static List<string> wordList = new List<string>()
     {
-        "pieter",
         "aap",
         "banaan",
         "appel",
@@ -14,7 +13,8 @@ public class a_model : MonoBehaviour {
         "index",
         "controle",
         "robbert",
-        "game"
+        "game",
+        "pieter"
     };
 
     private string userInput = "";
@@ -101,7 +101,7 @@ public class a_model : MonoBehaviour {
         }
     }
     
-    private float time = 5;
+    private float time = 60;
     public float Time
     {
         get

@@ -13,9 +13,19 @@ public class a_view : MonoBehaviour {
         fontSize.fontSize = 40;
     }
 
+    //********************************** BUTTON NOG EEN GOEDE FUNCTIE GEVEN **************************************//
 
     private void OnGUI()
     {
+        if (a_controller.AccessToModel.Still_alive == false)
+        {
+            //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
+            if (GUI.Button(new Rect(300, 300, 200, 200), "Switch to menu"))
+                {
+                Application.LoadLevel("menu");
+                }
+        }
+
         //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
         a_controller.AccessToModel.Time -= Time.deltaTime;
         //********************************** TIJD **************************************//
@@ -43,7 +53,7 @@ public class a_view : MonoBehaviour {
         
         //Positie van de textField, input die van de user kan komen
         Rect textFieldPosition = new Rect(500, 100, 200, 100);
-        a.UserInput = GUI.TextField(textFieldPosition, a.UserInput);
+        a.UserInput = GUI.TextField(textFieldPosition, a.UserInput, fontSize);
 
         //Positie van de drukknop
         Rect buttonPosition = new Rect(500, 200, 200, 100);

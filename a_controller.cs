@@ -17,13 +17,13 @@ public class a_controller : MonoBehaviour {
     }
 
     //Genereer een random woord om te raden
-    public void GenerateRandomWord() //  ----HIER MAG LATER NOG IETS VERWIJDERD WORDEN (Debug functie)----
+    public void GenerateRandomWord() 
     {
         //Waarde van Chosen_word = random woord
         AccessToModel.Chosen_word = a_model.wordList[PickWord()];
         //Guessed word (aantal streepjes voor het verborgen woord) wordt gelijk gezet aan het random woord
         AccessToModel.GuessedWord = new string("-"[0], AccessToModel.Chosen_word.Length);
-        //Spiekbriefje voor in de console te kunnen zien wat het woord dat geraden moet worden is ----DIT MAG LATER VERWIJDERD WORDEN----
+        //Spiekbriefje voor in de console te kunnen zien wat het woord dat geraden moet worden is
         //Debug.Log(AccessToModel.Chosen_word);
     }
 
@@ -64,21 +64,21 @@ public class a_controller : MonoBehaviour {
             //Verwijder een leven
             AccessToModel.Lives--;
 
-            //Laat ----VOORLOPIG---- de levens zien die nog over zijn in de console ----DIT MOET NOG AANGEPAST WORDEN----
-            Debug.Log(AccessToModel.Lives);
-
             //Laat nieuw deel van de man zien
             a_controller.AccessToController.SpawnFoto();
+
+            //Laat de levens zien die nog over zijn in de console (debug functie)
+            //Debug.Log(AccessToModel.Lives);
         }
     }
 
     //Voeg score toe
-    public int AddScore() // ----DIT MOET NOG AANGEPAST WORDEN----
+    public int AddScore()
     {
             //Tel een punt bij
             AccessToModel.Score++;
-            //Laat voorlopig de score die je haalt in de console zien ----DIT MOET NOG AANGEPAST WORDEN----
-            Debug.Log(AccessToModel.Score.ToString());
+            
+            //Return de waarde die Score op na toevoeging heeft
             return AccessToModel.Score;
     }
 
@@ -88,8 +88,8 @@ public class a_controller : MonoBehaviour {
         //Als de bool still_alive false is dan ... 
         if (AccessToModel.Still_alive == false)
         {
-            //laat een nieuw spel starten(door een scene te laden) ----DIT MOET NOG AANGEPAST WORDEN----
-            //Application.LoadLevel("scene-one");
+            //Spawn foto met hangende man
+            GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
         }
     }
 
@@ -118,7 +118,7 @@ public class a_controller : MonoBehaviour {
                 break;
             case 6:
                 GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
-                break;
+                break;             
         }
         AccessToModel.Counter++;
     }
@@ -126,13 +126,14 @@ public class a_controller : MonoBehaviour {
     //Check of er nog voldoende levens zijn om verder te spelen
     public void CheckForLives()
     {
-        AccessToModel.Still_alive = false;
         if (AccessToModel.Lives < 0)
         {
+            AccessToModel.Still_alive = false;
             EndGame();
         }
     }
 
+    //Als het woord gelijk is aan het gezochte woord voeg dan score toe
     public void WordIsRight()
     {
         if (AccessToModel.GuessedWord == AccessToModel.Chosen_word)
