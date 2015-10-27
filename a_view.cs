@@ -7,11 +7,7 @@ public class a_view : MonoBehaviour {
     private a_model a = a_controller.AccessToModel;
     private GUIStyle fontSize;
 
-    void Start()
-    {
-        fontSize = new GUIStyle();
-        fontSize.fontSize = 40;
-    }
+    
 
     //********************************** BUTTON NOG EEN GOEDE FUNCTIE GEVEN **************************************//
 
@@ -20,11 +16,14 @@ public class a_view : MonoBehaviour {
         if (a_controller.AccessToModel.Still_alive == false)
         {
             //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
-            if (GUI.Button(new Rect(300, 300, 200, 200), "Switch to menu"))
+            if (GUI.Button(new Rect(400, 200, 100, 100), "Play Again"))
                 {
-                Application.LoadLevel("menu");
-                }
+
+                Application.LoadLevel("scene-one");
+            }
         }
+        fontSize = new GUIStyle();
+        fontSize.fontSize = 40;
 
         //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
         a_controller.AccessToModel.Time -= Time.deltaTime;
@@ -70,7 +69,7 @@ public class a_view : MonoBehaviour {
         //}
         a_controller.AccessToController.WordIsRight();
 
-        GUI.Label(new Rect(50, 100, 200, 200), "Score" + a_controller.AccessToModel.Score);
+        GUI.Label(new Rect(100, 200, 200, 200), "Score" + a_controller.AccessToModel.Score);
 
 
         //********************************** BUTTON **************************************//

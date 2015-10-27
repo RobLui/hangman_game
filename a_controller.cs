@@ -91,7 +91,7 @@ public class a_controller : MonoBehaviour {
             //Spawn foto met hangende man
             GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
         }
-    }
+    } 
 
     //Spawn foto van hangende man
     public void SpawnFoto()
