@@ -13,15 +13,11 @@ public class a_view : MonoBehaviour {
         fontSize.fontSize = 40;
     }
 
-    void Update()
-    {
-        //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
-        a_controller.AccessToModel.Time -= Time.deltaTime;
-    }
 
     private void OnGUI()
     {
-
+        //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
+        a_controller.AccessToModel.Time -= Time.deltaTime;
         //********************************** TIJD **************************************//
         //Als de tijd groter is dan 0 dan..
         if (a_controller.AccessToModel.Time > 0)
@@ -55,13 +51,17 @@ public class a_view : MonoBehaviour {
         //********************************** VERGELIJKING **************************************//
 
         //Als het gekozen woord volledig gelijk is aan het te raden woord dan..
-        if (a.GuessedWord == a.Chosen_word)
-        {
-            //Voeg score toe
-            a_controller.AccessToController.AddScore();
-            //Genereer een nieuw random woord
-            a_controller.AccessToController.GenerateRandomWord();
-        }
+        //if (a.GuessedWord == a.Chosen_word)
+        //{
+        //    //Voeg score toe
+        //    a_controller.AccessToController.AddScore();
+        //    //Genereer een nieuw random woord
+        //    a_controller.AccessToController.GenerateRandomWord();
+        //}
+        a_controller.AccessToController.WordIsRight();
+
+        GUI.Label(new Rect(50, 100, 200, 200), "Score" + a_controller.AccessToModel.Score);
+
 
         //********************************** BUTTON **************************************//
 
@@ -82,16 +82,8 @@ public class a_view : MonoBehaviour {
                 a_controller.AccessToController.checkCharacter(a.UserInput[0]);
                 //Leegmaken van de user input na elke invoer van een letter
                 a.UserInput = GUI.TextField(textFieldPosition,"");
-
             }
         }
     }
 
-<<<<<<< HEAD
-    //Bij overtreden invoerregel van 1, deze error te geven op het scherm ----COMMENTAAR----
-    //Debug.Log("Not allowed");
-    //Message die zegt dat de invoer toegelaten is ----COMMENTAAR----
-    //Debug.Log("Allowed");
-=======
->>>>>>> 9ccab8dee369dbfefdfbd9d6fa73d8d43339be53
 }

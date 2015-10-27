@@ -101,7 +101,7 @@ public class a_model : MonoBehaviour {
         }
     }
     
-    private float time = 60;
+    private float time = 5;
     public float Time
     {
         get

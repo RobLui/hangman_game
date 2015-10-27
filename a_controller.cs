@@ -24,7 +24,7 @@ public class a_controller : MonoBehaviour {
         //Guessed word (aantal streepjes voor het verborgen woord) wordt gelijk gezet aan het random woord
         AccessToModel.GuessedWord = new string("-"[0], AccessToModel.Chosen_word.Length);
         //Spiekbriefje voor in de console te kunnen zien wat het woord dat geraden moet worden is ----DIT MAG LATER VERWIJDERD WORDEN----
-        Debug.Log(AccessToModel.Chosen_word);
+        //Debug.Log(AccessToModel.Chosen_word);
     }
 
     //Genereer een random woord op basis van de lijst grootte
@@ -73,12 +73,13 @@ public class a_controller : MonoBehaviour {
     }
 
     //Voeg score toe
-    public void AddScore() // ----DIT MOET NOG AANGEPAST WORDEN----
+    public int AddScore() // ----DIT MOET NOG AANGEPAST WORDEN----
     {
             //Tel een punt bij
             AccessToModel.Score++;
             //Laat voorlopig de score die je haalt in de console zien ----DIT MOET NOG AANGEPAST WORDEN----
             Debug.Log(AccessToModel.Score.ToString());
+            return AccessToModel.Score;
     }
 
     //Stop het spel
@@ -88,7 +89,7 @@ public class a_controller : MonoBehaviour {
         if (AccessToModel.Still_alive == false)
         {
             //laat een nieuw spel starten(door een scene te laden) ----DIT MOET NOG AANGEPAST WORDEN----
-            Application.LoadLevel("scene-one");
+            //Application.LoadLevel("scene-one");
         }
     }
 
@@ -129,6 +130,17 @@ public class a_controller : MonoBehaviour {
         if (AccessToModel.Lives < 0)
         {
             EndGame();
+        }
+    }
+
+    public void WordIsRight()
+    {
+        if (AccessToModel.GuessedWord == AccessToModel.Chosen_word)
+        {
+            //Voeg score toe
+            AddScore();
+            //Genereer een nieuw random woord
+            GenerateRandomWord();
         }
     }
 }
