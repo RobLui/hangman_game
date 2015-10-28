@@ -5,28 +5,18 @@ using System.Collections.Generic;
 public class a_view : MonoBehaviour {
 
     private a_model a = a_controller.AccessToModel;
-    private GUIStyle fontSize;
+    public GUISkin stylingSkin;
 
-    void Start()
-    {
-        fontSize = new GUIStyle();
-        fontSize.fontSize = 40;
-    }
+
 
     //********************************** BUTTON NOG EEN GOEDE FUNCTIE GEVEN **************************************//
 
     private void OnGUI()
     {
-        if (a_controller.AccessToModel.Still_alive == false)
-        {
-            //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
-            if (GUI.Button(new Rect(300, 300, 200, 200), "Switch to menu"))
-                {
-                Application.LoadLevel("menu");
-                }
-        }
 
-        //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat (aftellen)
+        
+
+        //De tijd wordt gelijk gesteld aan uren / minuten / senden, waar we - doen voor elke second die voorbij gaat (aftellen)
         a_controller.AccessToModel.Time -= Time.deltaTime;
         //********************************** TIJD **************************************//
         //Als de tijd groter is dan 0 dan..
@@ -49,11 +39,11 @@ public class a_view : MonoBehaviour {
 
         //Positie van de Positie waar de streepjes van het te raden woord in moeten komen
         Rect BoxPosition = new Rect(500, 50, 200, 50);
-        GUI.Box(BoxPosition, a.GuessedWord, fontSize);
+        GUI.Box(BoxPosition, a.GuessedWord );
         
         //Positie van de textField, input die van de user kan komen
         Rect textFieldPosition = new Rect(500, 100, 200, 100);
-        a.UserInput = GUI.TextField(textFieldPosition, a.UserInput, fontSize);
+        a.UserInput = GUI.TextField(textFieldPosition, a.UserInput );
 
         //Positie van de drukknop
         Rect buttonPosition = new Rect(500, 200, 200, 100);
@@ -70,7 +60,7 @@ public class a_view : MonoBehaviour {
         //}
         a_controller.AccessToController.WordIsRight();
 
-        GUI.Label(new Rect(50, 100, 200, 200), "Score" + a_controller.AccessToModel.Score);
+        GUI.Label(new Rect(100, 200, 200, 200), "Score" + a_controller.AccessToModel.Score);
 
 
         //********************************** BUTTON **************************************//
@@ -92,6 +82,17 @@ public class a_view : MonoBehaviour {
                 a_controller.AccessToController.checkCharacter(a.UserInput[0]);
                 //Leegmaken van de user input na elke invoer van een letter
                 a.UserInput = GUI.TextField(textFieldPosition,"");
+            }
+
+        }
+        if (a_controller.AccessToModel.Still_alive == false)
+        {
+            //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
+            if (GUI.Button(new Rect(400, 200, 100, 100), "Play Again"))
+            {
+                a_controller.AccessToController.GenerateRandomWord();
+                a_controller.AccessToController.CounterZero();
+                a_controller.AccessToModel.Time = 61;
             }
         }
     }

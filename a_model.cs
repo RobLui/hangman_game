@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class a_model : MonoBehaviour {
+public class a_model : MonoBehaviour
+{
 
     public static List<string> wordList = new List<string>()
     {
@@ -100,7 +101,7 @@ public class a_model : MonoBehaviour {
             still_alive = value;
         }
     }
-    
+
     private float time = 60;
     public float Time
     {
@@ -128,5 +129,6 @@ public class a_model : MonoBehaviour {
             counter = value;
         }
     }
+
 
 }
