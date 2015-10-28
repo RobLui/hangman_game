@@ -15,7 +15,7 @@ public class a_controller : MonoBehaviour {
         //Bij het starten van het spel creëer een woord om te raden
         GenerateRandomWord();
     }
-
+  
     //Genereer een random woord om te raden
     public void GenerateRandomWord() 
     {
@@ -92,7 +92,10 @@ public class a_controller : MonoBehaviour {
             GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
         }
     } 
-
+    public void CounterZero()
+    {
+        a_controller.AccessToModel.Counter = 0;
+    }
     //Spawn foto van hangende man
     public void SpawnFoto()
     {
