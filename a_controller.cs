@@ -43,10 +43,8 @@ public class a_controller : MonoBehaviour {
     {
         //Bij oproepen functie is de karakter nog niet bestaande (hier vertrekken we van)
         bool charExists = false;
-        if (AccessToModel.Still_alive == true)
+        if (AccessToModel.IsPressed)
         {
-
-
             //Loopen door elke letter van het gekozen woord
             for (int x = 0; x < AccessToModel.Chosen_word.Length; x++)
             {
@@ -69,9 +67,6 @@ public class a_controller : MonoBehaviour {
 
                 //Laat nieuw deel van de man zien
                 a_controller.AccessToController.SpawnFoto();
-
-                //Laat de levens zien die nog over zijn in de console (debug functie)
-                //Debug.Log(AccessToModel.Lives);
             }
         }
     }
@@ -158,6 +153,4 @@ public class a_controller : MonoBehaviour {
             AccessToModel.TopsScore = AccessToModel.Score;
         }
     }
-
-    //Nog zorgen dat de invoer niet verder kan gedaan worden als het spel op "you lose" staat!
 }

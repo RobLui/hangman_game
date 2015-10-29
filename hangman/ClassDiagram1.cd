@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="a_controller">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAABAAAAACAAAAAEBAAAAgAAAAACAIABAAAAAAAQAAI=</HashCode>
+      <FileName>Assets\Scripts\a_controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="a_model">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAABABAAAAACAAgAAAAIAAAAAxICAgMSAgIACAAAAQg=</HashCode>
+      <FileName>Assets\Scripts\a_model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="a_view">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgACCAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\a_view.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

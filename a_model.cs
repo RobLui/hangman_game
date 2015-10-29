@@ -12,9 +12,7 @@ public class a_model : MonoBehaviour {
         "naam",
         "index",
         "controle",
-        "robbert",
-        "game",
-        "pieter"
+        "game"
     };
 
     private string userInput = "";
@@ -56,6 +54,23 @@ public class a_model : MonoBehaviour {
         set
         {
             chosen_word = value;
+        }
+    }
+
+    
+
+    
+    private float time = 121;
+    public float Time
+    {
+        get
+        {
+            return time;
+        }
+
+        set
+        {
+            time = value;
         }
     }
 
@@ -101,34 +116,6 @@ public class a_model : MonoBehaviour {
         }
     }
 
-    private bool still_alive = true;
-    public bool Still_alive
-    {
-        get
-        {
-            return still_alive;
-        }
-
-        set
-        {
-            still_alive = value;
-        }
-    }
-    
-    private float time = 61;
-    public float Time
-    {
-        get
-        {
-            return time;
-        }
-
-        set
-        {
-            time = value;
-        }
-    }
-
     private int counter = 0;
     public int Counter
     {
@@ -140,6 +127,22 @@ public class a_model : MonoBehaviour {
         set
         {
             counter = value;
+        }
+    }
+
+
+
+    private bool still_alive = true;
+    public bool Still_alive
+    {
+        get
+        {
+            return still_alive;
+        }
+
+        set
+        {
+            still_alive = value;
         }
     }
 
@@ -157,5 +160,4 @@ public class a_model : MonoBehaviour {
         }
     }
 
-  
 }

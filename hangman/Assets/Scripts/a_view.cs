@@ -10,8 +10,9 @@ public class a_view : MonoBehaviour {
 
     public void OnGUI()
     {
-        GUI.skin = stylingSkin;
 
+        //Dient om ons lettertype grootte/kleur etc. te veranderen
+        GUI.skin = stylingSkin;
 
         //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat 
         a_controller.AccessToModel.Time -= Time.deltaTime;
@@ -29,20 +30,25 @@ public class a_view : MonoBehaviour {
             GUI.Label(new Rect(200, 100, 200, 100), "You lose");
             //waarde van levend/dood wordt op "dood" gezet als de tijd over is
             a.Still_alive = false;
+            //Toon het woord dat je moest raden als je dood bent
+            GUI.Box(new Rect(750, 500, 300, 50), ("Het woord was " + a_controller.AccessToModel.Chosen_word).ToString());
         }
 
 
 
 
-        //********************************** POSITIE BOXEN **************************************//
+        //********************************** POSITIES **************************************//
 
         //Positie van de Positie waar de streepjes van het te raden woord in moeten komen
         Rect BoxPosition = new Rect(500, 100, 200, 50);
         GUI.Box(BoxPosition, a.GuessedWord);
         
         //Positie van de textField, input die van de user kan komen
-        Rect textFieldPosition = new Rect(500, 150, 200, 100);
+        Rect textFieldPosition = new Rect(500, 300, 200, 100);
         a.UserInput = GUI.TextField(textFieldPosition, a.UserInput);
+
+        //Positie van de drukknop
+        Rect buttonPosition = new Rect(500, 400, 200, 100);
 
 
 
@@ -52,21 +58,20 @@ public class a_view : MonoBehaviour {
 
         //Als het gekozen woord volledig gelijk is aan het te raden woord dan..
         a_controller.AccessToController.WordIsRight();
+        //Zet de waarde van topScore op de effectief hoogste waarde, anders doe niets
+        a_controller.AccessToController.UpdateTopScore();
 
-        //Zet het label van score op de waardes
+        //Zet het label van Score op de waarde
         GUI.Label(new Rect(200, 300, 200, 100), ("Score: " + a_controller.AccessToModel.Score));
 
-        //Handel topscore af
-        a_controller.AccessToController.UpdateTopScore();
+        //Zet het label van TopScore op waarde
         GUI.Label(new Rect(200, 500, 200, 100), ("TopScore: " + a_controller.AccessToModel.TopsScore));
 
 
 
 
-        //********************************** BUTTON **************************************//
 
-        //Positie van de drukknop
-        Rect buttonPosition = new Rect(500, 250, 200, 100);
+        //********************************** BUTTON **************************************//
 
         //Als er op de knop wordt gedrukt dan... (Op de knop staat "Probeer")
         if (GUI.Button(buttonPosition, "Probeer"))
@@ -87,20 +92,33 @@ public class a_view : MonoBehaviour {
                 a.UserInput = GUI.TextField(textFieldPosition,"");
             }
         }
-
+        //Als de counter terug naar 0 wordt gezet
+        if (a_controller.AccessToModel.Counter == 0)
+        {
+            //Dan zet je automatisch de knop uit waarmee je een nieuw spel kan starten (dit door deze bool)
+            a_controller.AccessToModel.IsPressed = true;
+        }
+        //Als je dood bent dan
         if (a_controller.AccessToModel.Still_alive == false)
         {
+            //Als de knop nog niet ingedrukt is en de tijd kleiner of gelijk aan nul is
             if (!a_controller.AccessToModel.IsPressed || a_controller.AccessToModel.Time <= 0)
             {
+                //Laad zowizo de foto van de volledig hangende man omdat je dood bent
                 GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
 
                 //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
-                if (GUI.Button(new Rect(500, 400, 200, 100), "Play Again"))
+                if (GUI.Button(new Rect(500, 500, 200, 100), "Play Again"))
                 {
+                    //Genereer random woord
                     a_controller.AccessToController.GenerateRandomWord();
+                    //Zet de counter voor de aanroeping van de foto-elementen terug op 0, zodat terug van hier begonnen kan worden
                     a_controller.AccessToController.CounterZero();
-                    a_controller.AccessToModel.Time = 61;
+                    //Zet de tijd terug op een de waarde waar je mee begon
+                    a_controller.AccessToModel.Time = 121;
+                    //Laad een lege afbeelding zodat je terug vanuit geen foto-elementen kan beginnen met het spel
                     GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("");
+                    //Zet de waarde van Pressed op true waardoor je er gaat voor zorgen dat de button verdwijnt
                     a_controller.AccessToModel.IsPressed = true;
                 }
             }
