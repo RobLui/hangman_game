@@ -87,6 +87,20 @@ public class a_model : MonoBehaviour {
         }
     }
 
+    private int topsScore;
+    public int TopsScore
+    {
+        get
+        {
+            return topsScore;
+        }
+
+        set
+        {
+            topsScore = value;
+        }
+    }
+
     private bool still_alive = true;
     public bool Still_alive
     {
@@ -129,4 +143,19 @@ public class a_model : MonoBehaviour {
         }
     }
 
+    private bool isPressed;
+    public bool IsPressed
+    {
+        get
+        {
+            return isPressed;
+        }
+
+        set
+        {
+            isPressed = value;
+        }
+    }
+
+  
 }
