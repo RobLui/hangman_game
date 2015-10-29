@@ -141,15 +141,11 @@ public class a_controller : MonoBehaviour {
     {
         //Zet de waarde van counter op 0, zorgt ervoor dat de foto's terug van 0 beginnen
         a_controller.AccessToModel.Counter = 0;
+        //Score wordt gereset
         a_controller.AccessToModel.Score = 0;
     }
 
-    //knop drop
-    public bool CheckForPress()
-    {
-        return AccessToModel.IsPressed;
-    }
-
+    //topScore gelijk zetten aan score wanneer hoger dan huidige score
     public void UpdateTopScore()
     {
         if(AccessToModel.Score >= AccessToModel.TopsScore)
