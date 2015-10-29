@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: d99912320170b7143a27b894df589288
+timeCreated: 1445994201
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: grey_0
+    21300002: grey_1
+    21300004: grey_2
+    21300006: grey_3
+    21300008: grey_4
+    21300010: grey_5
+    21300012: grey_6
+    21300014: grey_7
+    21300016: grey_8
+    21300018: grey_9
+    21300020: grey_10
+    21300022: grey_11
+    21300024: grey_12
+    21300026: grey_13
+    21300028: grey_14
+    21300030: grey_15
+    21300032: grey_16
+    21300034: grey_17
+    21300036: grey_18
+    21300038: grey_19
+    21300040: grey_20
+    21300042: grey_21
+    21300044: grey_22
+    21300046: grey_23
+    21300048: grey_24
+    21300050: grey_25
+    21300052: grey_26
+    21300054: grey_27
+    21300056: grey_28
+    21300058: grey_29
+    21300060: grey_30
+    21300062: grey_31
+    21300064: grey_32
+    21300066: grey_33
+    21300068: grey_34
+    21300070: grey_35
+    21300072: grey_36
+    21300074: grey_37
+    21300076: grey_38
+    21300078: grey_39
+    21300080: grey_40
+    21300082: grey_41
+    21300084: grey_42
+    21300086: grey_43
+    21300088: grey_44
+    21300090: grey_45
+    21300092: grey_46
+    21300094: grey_47
+    21300096: grey_48
+    21300098: grey_49
+    21300100: grey_50
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 256
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: .200000003, y: .300000012}
+  spriteBorder: {x: 45, y: 18, z: 50, w: 16}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: grey_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 170
+        height: 72
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
