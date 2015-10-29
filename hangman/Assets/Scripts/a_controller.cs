@@ -82,17 +82,6 @@ public class a_controller : MonoBehaviour {
             return AccessToModel.Score;
     }
 
-    //Stop het spel
-    public void EndGame() //----DIT MOET NOG AANGEPAST WORDEN----
-    {
-        //Als de bool still_alive false is dan ... 
-        if (AccessToModel.Still_alive == false)
-        {
-            //Spawn foto met hangende man
-            GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
-        }
-    }
-    
     //Spawn foto van hangende man
     public void SpawnFoto()
     {
@@ -118,7 +107,8 @@ public class a_controller : MonoBehaviour {
                 break;
             case 6:
                 GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
-                break;             
+                a_controller.AccessToModel.IsPressed = false;
+                break;
         }
         AccessToModel.Counter++;
     }
@@ -130,8 +120,6 @@ public class a_controller : MonoBehaviour {
         {
             //Zet still_alive op vals
             AccessToModel.Still_alive = false;
-            //Voer EndGame() uit
-            EndGame();
         }
     }
 
@@ -154,6 +142,20 @@ public class a_controller : MonoBehaviour {
         //Zet de waarde van counter op 0, zorgt ervoor dat de foto's terug van 0 beginnen
         a_controller.AccessToModel.Counter = 0;
         a_controller.AccessToModel.Score = 0;
+    }
+
+    //knop drop
+    public bool CheckForPress()
+    {
+        return AccessToModel.IsPressed;
+    }
+
+    public void UpdateTopScore()
+    {
+        if(AccessToModel.Score >= AccessToModel.TopsScore)
+        {
+            AccessToModel.TopsScore = AccessToModel.Score;
+        }
     }
     
 }

@@ -21,7 +21,7 @@ public class a_view : MonoBehaviour {
         if (a_controller.AccessToModel.Time > 0)
         {
         //show de tijd die je nog over hebt in GUI (unity scherm)
-            GUI.Label(new Rect(100, 100, 200, 200), "Je hebt nog " + ((int)a_controller.AccessToModel.Time + " seconden"));
+            GUI.Label(new Rect(100, 100, 200, 200), ((int)a_controller.AccessToModel.Time).ToString());
         }
         else
         {
@@ -29,8 +29,6 @@ public class a_view : MonoBehaviour {
             GUI.Label(new Rect(100, 100, 100, 100), "Je tijd is om, you lose");
             //waarde van levend/dood wordt op "dood" gezet als de tijd over is
             a.Still_alive = false;
-            //stop het spel als de tijd om is ------ NOG AAN TE MAKEN ------
-            a_controller.AccessToController.EndGame();
         }
 
 
@@ -57,6 +55,10 @@ public class a_view : MonoBehaviour {
 
         //Zet het label van score op de waardes
         GUI.Label(new Rect(900, 100, 200, 200), ("Score: " + a_controller.AccessToModel.Score));
+
+        //Handel topscore af
+        a_controller.AccessToController.UpdateTopScore();
+        GUI.Label(new Rect(900, 300, 200, 200), ("TopScore: " + a_controller.AccessToModel.TopsScore));
 
 
 
@@ -88,13 +90,17 @@ public class a_view : MonoBehaviour {
 
         if (a_controller.AccessToModel.Still_alive == false)
         {
-            //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
-            if (GUI.Button(new Rect(300, 200, 200, 100), "Play Again"))
+            if (!a_controller.AccessToModel.IsPressed)
             {
-                a_controller.AccessToController.GenerateRandomWord();
-                a_controller.AccessToController.CounterZero();
-                a_controller.AccessToModel.Time = 61;
-                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("");
+                //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
+                if (GUI.Button(new Rect(300, 200, 200, 100), "Play Again"))
+                {
+                    a_controller.AccessToController.GenerateRandomWord();
+                    a_controller.AccessToController.CounterZero();
+                    a_controller.AccessToModel.Time = 61;
+                    GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("");
+                    a_controller.AccessToModel.IsPressed = true;
+                }
             }
         }
     }

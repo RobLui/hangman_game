@@ -1,0 +1,17 @@
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\Mono.Cecil.dll
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEditor.dll
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEngine.dll
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEngine.Networking.dll
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEngine.xml
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEngine.Networking.xml
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEditor.xml
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\Mono.Cecil.xml
+D:\Unity 5\Games\hangman\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml
+D:\Unity 5\Games\hangman\Temp\UnityVS_obj\Debug\hangman.CSharp.csprojResolveAssemblyReference.cache
+D:\Unity 5\Games\hangman\Temp\UnityVS_obj\Debug\Assembly-CSharp.dll
+D:\Unity 5\Games\hangman\Temp\UnityVS_obj\Debug\Assembly-CSharp.pdb
