@@ -21,12 +21,16 @@ public class a_view : MonoBehaviour {
         if (a_controller.AccessToModel.Time > 0)
         {
         //show de tijd die je nog over hebt in GUI (unity scherm)
+<<<<<<< HEAD
             GUI.Label(new Rect(100, 100, 200, 200), ((int)a_controller.AccessToModel.Time).ToString());
+=======
+            GUI.Label(new Rect(200, 100, 200, 100), ((int)a_controller.AccessToModel.Time).ToString());
+>>>>>>> c456146b95437cd5f8a02c3514fe20a0030bf983
         }
         else
         {
         //Verander het label naar andere text op dezelfde plaats in GUI
-            GUI.Label(new Rect(100, 100, 100, 100), "Je tijd is om, you lose");
+            GUI.Label(new Rect(200, 100, 200, 100), "You lose");
             //waarde van levend/dood wordt op "dood" gezet als de tijd over is
             a.Still_alive = false;
         }
@@ -37,11 +41,11 @@ public class a_view : MonoBehaviour {
         //********************************** POSITIE BOXEN **************************************//
 
         //Positie van de Positie waar de streepjes van het te raden woord in moeten komen
-        Rect BoxPosition = new Rect(500, 50, 200, 50);
+        Rect BoxPosition = new Rect(500, 100, 200, 50);
         GUI.Box(BoxPosition, a.GuessedWord);
         
         //Positie van de textField, input die van de user kan komen
-        Rect textFieldPosition = new Rect(500, 100, 200, 100);
+        Rect textFieldPosition = new Rect(500, 150, 200, 100);
         a.UserInput = GUI.TextField(textFieldPosition, a.UserInput);
 
 
@@ -54,7 +58,11 @@ public class a_view : MonoBehaviour {
         a_controller.AccessToController.WordIsRight();
 
         //Zet het label van score op de waardes
-        GUI.Label(new Rect(900, 100, 200, 200), ("Score: " + a_controller.AccessToModel.Score));
+        GUI.Label(new Rect(200, 300, 200, 100), ("Score: " + a_controller.AccessToModel.Score));
+
+        //Handel topscore af
+        a_controller.AccessToController.UpdateTopScore();
+        GUI.Label(new Rect(200, 500, 200, 100), ("TopScore: " + a_controller.AccessToModel.TopsScore));
 
         //Handel topscore af
         a_controller.AccessToController.UpdateTopScore();
@@ -66,7 +74,7 @@ public class a_view : MonoBehaviour {
         //********************************** BUTTON **************************************//
 
         //Positie van de drukknop
-        Rect buttonPosition = new Rect(500, 200, 200, 100);
+        Rect buttonPosition = new Rect(500, 250, 200, 100);
 
         //Als er op de knop wordt gedrukt dan... (Op de knop staat "Probeer")
         if (GUI.Button(buttonPosition, "Probeer"))
@@ -93,7 +101,11 @@ public class a_view : MonoBehaviour {
             if (!a_controller.AccessToModel.IsPressed)
             {
                 //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
+<<<<<<< HEAD
                 if (GUI.Button(new Rect(300, 200, 200, 100), "Play Again"))
+=======
+                if (GUI.Button(new Rect(500, 400, 200, 100), "Play Again"))
+>>>>>>> c456146b95437cd5f8a02c3514fe20a0030bf983
                 {
                     a_controller.AccessToController.GenerateRandomWord();
                     a_controller.AccessToController.CounterZero();

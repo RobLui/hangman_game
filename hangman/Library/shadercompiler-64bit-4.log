@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Base path: D:/Unity 5/Editor/Data
 Pipe name: \\.\pipe\UnityShaderCompiler-64bit-4-15852
 Cmd: getPlatforms
@@ -5,3 +6,8 @@ Unhandled exception: Readfile from pipe failed. GLE=De pipe is beëindigd.
 
 
 Quitting shader compiler process
+=======
+Base path: D:/Unity 5/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-4-16772
+Cmd: getPlatforms
+>>>>>>> c456146b95437cd5f8a02c3514fe20a0030bf983
