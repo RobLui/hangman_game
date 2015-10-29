@@ -73,7 +73,7 @@ public class a_model : MonoBehaviour {
         }
     }
 
-    private int score = 0;
+    private int score = -1;
     public int Score
     {
         get
@@ -84,6 +84,20 @@ public class a_model : MonoBehaviour {
         set
         {
             score = value;
+        }
+    }
+
+    private int topsScore;
+    public int TopsScore
+    {
+        get
+        {
+            return topsScore;
+        }
+
+        set
+        {
+            topsScore = value;
         }
     }
 
@@ -101,7 +115,7 @@ public class a_model : MonoBehaviour {
         }
     }
     
-    private float time = 60;
+    private float time = 61;
     public float Time
     {
         get
@@ -129,4 +143,19 @@ public class a_model : MonoBehaviour {
         }
     }
 
+    private bool isPressed;
+    public bool IsPressed
+    {
+        get
+        {
+            return isPressed;
+        }
+
+        set
+        {
+            isPressed = value;
+        }
+    }
+
+  
 }

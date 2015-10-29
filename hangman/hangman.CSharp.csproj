@@ -68,7 +68,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\a_controller.cs" />
     <Compile Include="Assets\Scripts\a_model.cs" />
     <Compile Include="Assets\Scripts\a_view.cs" />

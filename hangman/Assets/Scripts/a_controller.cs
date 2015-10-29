@@ -43,32 +43,36 @@ public class a_controller : MonoBehaviour {
     {
         //Bij oproepen functie is de karakter nog niet bestaande (hier vertrekken we van)
         bool charExists = false;
-        
-        //Loopen door elke letter van het gekozen woord
-        for (int x = 0; x < AccessToModel.Chosen_word.Length; x++)
+        if (AccessToModel.Still_alive == true)
         {
-            //Als karakter a gelijk is aan een letter in het woord dan..
-            if (AccessToModel.Chosen_word[x] == a)
+
+
+            //Loopen door elke letter van het gekozen woord
+            for (int x = 0; x < AccessToModel.Chosen_word.Length; x++)
             {
-                //Zetten we karakter bestaat op true
-                charExists = true;
-                //Gaan we een tijdelijke string aanmaken die het woord splitst en de letter op de plaats zet waar hij zijn gelijke letter terugvind
-                string temp = AccessToModel.GuessedWord.Substring(0, x);
-                //Zet guessedWord gelijk aan de toegevoegde letter (op de plaats waar hij vandaan komt) en voeg de rest van de letters weer toe als "-" in het woord
-                AccessToModel.GuessedWord = temp + a.ToString() + AccessToModel.GuessedWord.Substring(x + 1, AccessToModel.GuessedWord.Length - x - 1);
+                //Als karakter a gelijk is aan een letter in het woord dan..
+                if (AccessToModel.Chosen_word[x] == a)
+                {
+                    //Zetten we karakter bestaat op true
+                    charExists = true;
+                    //Gaan we een tijdelijke string aanmaken die het woord splitst en de letter op de plaats zet waar hij zijn gelijke letter terugvind
+                    string temp = AccessToModel.GuessedWord.Substring(0, x);
+                    //Zet guessedWord gelijk aan de toegevoegde letter (op de plaats waar hij vandaan komt) en voeg de rest van de letters weer toe als "-" in het woord
+                    AccessToModel.GuessedWord = temp + a.ToString() + AccessToModel.GuessedWord.Substring(x + 1, AccessToModel.GuessedWord.Length - x - 1);
+                }
             }
-        }
-        // Foute letter geraden = Als de karakter niet bestaat in het te zoeken woord dan..
-        if (!charExists)
-        {
-            //Verwijder een leven
-            AccessToModel.Lives--;
+            // Foute letter geraden = Als de karakter niet bestaat in het te zoeken woord dan..
+            if (!charExists)
+            {
+                //Verwijder een leven
+                AccessToModel.Lives--;
 
-            //Laat nieuw deel van de man zien
-            a_controller.AccessToController.SpawnFoto();
+                //Laat nieuw deel van de man zien
+                a_controller.AccessToController.SpawnFoto();
 
-            //Laat de levens zien die nog over zijn in de console (debug functie)
-            //Debug.Log(AccessToModel.Lives);
+                //Laat de levens zien die nog over zijn in de console (debug functie)
+                //Debug.Log(AccessToModel.Lives);
+            }
         }
     }
 
@@ -108,6 +112,7 @@ public class a_controller : MonoBehaviour {
             case 6:
                 GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
                 a_controller.AccessToModel.IsPressed = false;
+                a_controller.AccessToModel.Time = 0;
                 break;
         }
         AccessToModel.Counter++;
@@ -145,16 +150,7 @@ public class a_controller : MonoBehaviour {
         a_controller.AccessToModel.Score = 0;
     }
 
-<<<<<<< HEAD
-    //knop drop
-    public bool CheckForPress()
-    {
-        return AccessToModel.IsPressed;
-    }
-
-=======
     //topScore gelijk zetten aan score wanneer hoger dan huidige score
->>>>>>> c456146b95437cd5f8a02c3514fe20a0030bf983
     public void UpdateTopScore()
     {
         if(AccessToModel.Score >= AccessToModel.TopsScore)
@@ -162,5 +158,6 @@ public class a_controller : MonoBehaviour {
             AccessToModel.TopsScore = AccessToModel.Score;
         }
     }
-    
+
+    //Nog zorgen dat de invoer niet verder kan gedaan worden als het spel op "you lose" staat!
 }

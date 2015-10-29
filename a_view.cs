@@ -5,46 +5,30 @@ using System.Collections.Generic;
 public class a_view : MonoBehaviour {
 
     private a_model a = a_controller.AccessToModel;
-   // public GUIStyle stylingGUI;
+    // public GUIStyle stylingGUI;
     public GUISkin stylingSkin;
 
     public void OnGUI()
     {
-        // public GUISkin mySkin;
         GUI.skin = stylingSkin;
 
-        if (a_controller.AccessToModel.Still_alive == false)
-        {
-            //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
-            if (GUI.Button(new Rect(400, 200, 100, 100), "Switch to menu"))
-                {
-                a_controller.AccessToController.GenerateRandomWord();
-                a_controller.AccessToController.CounterZero();
-                a_controller.AccessToModel.Time = 61;
-                }
-        }
 
         //De tijd wordt gelijk gesteld aan uren / minuten / seconden, waar we - doen voor elke second die voorbij gaat 
         a_controller.AccessToModel.Time -= Time.deltaTime;
-
-
-
 
         //********************************** TIJD **************************************//
         //Als de tijd groter is dan 0 dan..
         if (a_controller.AccessToModel.Time > 0)
         {
         //show de tijd die je nog over hebt in GUI (unity scherm)
-            GUI.Label(new Rect(100, 100, 200, 200), "Je hebt nog " + ((int)a_controller.AccessToModel.Time + " seconden"));
+            GUI.Label(new Rect(200, 100, 200, 100), ((int)a_controller.AccessToModel.Time).ToString());
         }
         else
         {
         //Verander het label naar andere text op dezelfde plaats in GUI
-            GUI.Label(new Rect(100, 100, 100, 100), "Je tijd is om, you lose");
+            GUI.Label(new Rect(200, 100, 200, 100), "You lose");
             //waarde van levend/dood wordt op "dood" gezet als de tijd over is
             a.Still_alive = false;
-            //stop het spel als de tijd om is ------ NOG AAN TE MAKEN ------
-            a_controller.AccessToController.EndGame();
         }
 
 
@@ -53,11 +37,11 @@ public class a_view : MonoBehaviour {
         //********************************** POSITIE BOXEN **************************************//
 
         //Positie van de Positie waar de streepjes van het te raden woord in moeten komen
-        Rect BoxPosition = new Rect(500, 50, 200, 50);
+        Rect BoxPosition = new Rect(500, 100, 200, 50);
         GUI.Box(BoxPosition, a.GuessedWord);
         
         //Positie van de textField, input die van de user kan komen
-        Rect textFieldPosition = new Rect(500, 100, 200, 100);
+        Rect textFieldPosition = new Rect(500, 150, 200, 100);
         a.UserInput = GUI.TextField(textFieldPosition, a.UserInput);
 
 
@@ -69,7 +53,12 @@ public class a_view : MonoBehaviour {
         //Als het gekozen woord volledig gelijk is aan het te raden woord dan..
         a_controller.AccessToController.WordIsRight();
 
-        GUI.Label(new Rect(900, 100, 200, 200), ("Score: " + a_controller.AccessToModel.Score));
+        //Zet het label van score op de waardes
+        GUI.Label(new Rect(200, 300, 200, 100), ("Score: " + a_controller.AccessToModel.Score));
+
+        //Handel topscore af
+        a_controller.AccessToController.UpdateTopScore();
+        GUI.Label(new Rect(200, 500, 200, 100), ("TopScore: " + a_controller.AccessToModel.TopsScore));
 
 
 
@@ -77,7 +66,7 @@ public class a_view : MonoBehaviour {
         //********************************** BUTTON **************************************//
 
         //Positie van de drukknop
-        Rect buttonPosition = new Rect(500, 200, 200, 100);
+        Rect buttonPosition = new Rect(500, 250, 200, 100);
 
         //Als er op de knop wordt gedrukt dan... (Op de knop staat "Probeer")
         if (GUI.Button(buttonPosition, "Probeer"))
@@ -96,6 +85,24 @@ public class a_view : MonoBehaviour {
                 a_controller.AccessToController.checkCharacter(a.UserInput[0]);
                 //Leegmaken van de user input na elke invoer van een letter
                 a.UserInput = GUI.TextField(textFieldPosition,"");
+            }
+        }
+
+        if (a_controller.AccessToModel.Still_alive == false)
+        {
+            if (!a_controller.AccessToModel.IsPressed || a_controller.AccessToModel.Time <= 0)
+            {
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
+
+                //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
+                if (GUI.Button(new Rect(500, 400, 200, 100), "Play Again"))
+                {
+                    a_controller.AccessToController.GenerateRandomWord();
+                    a_controller.AccessToController.CounterZero();
+                    a_controller.AccessToModel.Time = 61;
+                    GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("");
+                    a_controller.AccessToModel.IsPressed = true;
+                }
             }
         }
     }

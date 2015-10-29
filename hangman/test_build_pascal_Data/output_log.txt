@@ -6,29 +6,37 @@ Direct3D:
     Vendor:   Intel
     VRAM:     128 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.045 seconds
+Platform assembly: D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.318 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-Platform assembly: D:\git_map\hangman_game\hangman\test_build_pascal_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\Unity 5\Games\hangman\test_build_pascal_Data\Managed\System.dll (this message is harmless)
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 4520 -> priority: 1 
-  Thread -> id: 43bc -> priority: 1 
-banaan
+  Thread -> id: 1738 -> priority: 1 
+  Thread -> id: 5a8c -> priority: 1 
+appel
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-banaan
+index
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+naam
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+appel
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
@@ -40,7 +48,15 @@ appel
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-controle
+appel
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+index
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+index
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 

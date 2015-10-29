@@ -24,7 +24,7 @@ public class a_controller : MonoBehaviour {
         //Guessed word (aantal streepjes voor het verborgen woord) wordt gelijk gezet aan het random woord
         AccessToModel.GuessedWord = new string("-"[0], AccessToModel.Chosen_word.Length);
         //Spiekbriefje voor in de console te kunnen zien wat het woord dat geraden moet worden is
-        //Debug.Log(AccessToModel.Chosen_word);
+        Debug.Log(AccessToModel.Chosen_word);
     }
 
     //Genereer een random woord op basis van de lijst grootte
@@ -43,32 +43,36 @@ public class a_controller : MonoBehaviour {
     {
         //Bij oproepen functie is de karakter nog niet bestaande (hier vertrekken we van)
         bool charExists = false;
-        
-        //Loopen door elke letter van het gekozen woord
-        for (int x = 0; x < AccessToModel.Chosen_word.Length; x++)
+        if (AccessToModel.Still_alive == true)
         {
-            //Als karakter a gelijk is aan een letter in het woord dan..
-            if (AccessToModel.Chosen_word[x] == a)
+
+
+            //Loopen door elke letter van het gekozen woord
+            for (int x = 0; x < AccessToModel.Chosen_word.Length; x++)
             {
-                //Zetten we karakter bestaat op true
-                charExists = true;
-                //Gaan we een tijdelijke string aanmaken die het woord splitst en de letter op de plaats zet waar hij zijn gelijke letter terugvind
-                string temp = AccessToModel.GuessedWord.Substring(0, x);
-                //Zet guessedWord gelijk aan de toegevoegde letter (op de plaats waar hij vandaan komt) en voeg de rest van de letters weer toe als "-" in het woord
-                AccessToModel.GuessedWord = temp + a.ToString() + AccessToModel.GuessedWord.Substring(x + 1, AccessToModel.GuessedWord.Length - x - 1);
+                //Als karakter a gelijk is aan een letter in het woord dan..
+                if (AccessToModel.Chosen_word[x] == a)
+                {
+                    //Zetten we karakter bestaat op true
+                    charExists = true;
+                    //Gaan we een tijdelijke string aanmaken die het woord splitst en de letter op de plaats zet waar hij zijn gelijke letter terugvind
+                    string temp = AccessToModel.GuessedWord.Substring(0, x);
+                    //Zet guessedWord gelijk aan de toegevoegde letter (op de plaats waar hij vandaan komt) en voeg de rest van de letters weer toe als "-" in het woord
+                    AccessToModel.GuessedWord = temp + a.ToString() + AccessToModel.GuessedWord.Substring(x + 1, AccessToModel.GuessedWord.Length - x - 1);
+                }
             }
-        }
-        // Foute letter geraden = Als de karakter niet bestaat in het te zoeken woord dan..
-        if (!charExists)
-        {
-            //Verwijder een leven
-            AccessToModel.Lives--;
+            // Foute letter geraden = Als de karakter niet bestaat in het te zoeken woord dan..
+            if (!charExists)
+            {
+                //Verwijder een leven
+                AccessToModel.Lives--;
 
-            //Laat nieuw deel van de man zien
-            a_controller.AccessToController.SpawnFoto();
+                //Laat nieuw deel van de man zien
+                a_controller.AccessToController.SpawnFoto();
 
-            //Laat de levens zien die nog over zijn in de console (debug functie)
-            //Debug.Log(AccessToModel.Lives);
+                //Laat de levens zien die nog over zijn in de console (debug functie)
+                //Debug.Log(AccessToModel.Lives);
+            }
         }
     }
 
@@ -80,18 +84,6 @@ public class a_controller : MonoBehaviour {
             
             //Return de waarde die Score op na toevoeging heeft
             return AccessToModel.Score;
-    }
-
-    //Stop het spel
-    public void EndGame() //----DIT MOET NOG AANGEPAST WORDEN----
-    {
-        //Als de bool still_alive false is dan ... 
-        if (AccessToModel.Still_alive == false)
-        {
-            //Spawn foto met hangende man
-            GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
-            //NewGame();
-        }
     }
 
     //Spawn foto van hangende man
@@ -119,7 +111,9 @@ public class a_controller : MonoBehaviour {
                 break;
             case 6:
                 GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
-                break;             
+                a_controller.AccessToModel.IsPressed = false;
+                a_controller.AccessToModel.Time = 0;
+                break;
         }
         AccessToModel.Counter++;
     }
@@ -129,14 +123,15 @@ public class a_controller : MonoBehaviour {
     {
         if (AccessToModel.Lives < 0)
         {
+            //Zet still_alive op vals
             AccessToModel.Still_alive = false;
-            EndGame();
         }
     }
 
     //Als het woord gelijk is aan het gezochte woord voeg dan score toe
     public void WordIsRight()
     {
+        //Vergelijk het ingevoerde woord met het te raden woord
         if (AccessToModel.GuessedWord == AccessToModel.Chosen_word)
         {
             //Voeg score toe
@@ -146,9 +141,23 @@ public class a_controller : MonoBehaviour {
         }
     }
 
+    //Reset de counter naar 0
     public void CounterZero()
     {
+        //Zet de waarde van counter op 0, zorgt ervoor dat de foto's terug van 0 beginnen
         a_controller.AccessToModel.Counter = 0;
+        //Score wordt gereset
+        a_controller.AccessToModel.Score = 0;
     }
-    
+
+    //topScore gelijk zetten aan score wanneer hoger dan huidige score
+    public void UpdateTopScore()
+    {
+        if(AccessToModel.Score >= AccessToModel.TopsScore)
+        {
+            AccessToModel.TopsScore = AccessToModel.Score;
+        }
+    }
+
+    //Nog zorgen dat de invoer niet verder kan gedaan worden als het spel op "you lose" staat!
 }

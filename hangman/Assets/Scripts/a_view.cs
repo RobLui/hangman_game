@@ -21,11 +21,7 @@ public class a_view : MonoBehaviour {
         if (a_controller.AccessToModel.Time > 0)
         {
         //show de tijd die je nog over hebt in GUI (unity scherm)
-<<<<<<< HEAD
-            GUI.Label(new Rect(100, 100, 200, 200), ((int)a_controller.AccessToModel.Time).ToString());
-=======
             GUI.Label(new Rect(200, 100, 200, 100), ((int)a_controller.AccessToModel.Time).ToString());
->>>>>>> c456146b95437cd5f8a02c3514fe20a0030bf983
         }
         else
         {
@@ -64,10 +60,6 @@ public class a_view : MonoBehaviour {
         a_controller.AccessToController.UpdateTopScore();
         GUI.Label(new Rect(200, 500, 200, 100), ("TopScore: " + a_controller.AccessToModel.TopsScore));
 
-        //Handel topscore af
-        a_controller.AccessToController.UpdateTopScore();
-        GUI.Label(new Rect(900, 300, 200, 200), ("TopScore: " + a_controller.AccessToModel.TopsScore));
-
 
 
 
@@ -98,14 +90,12 @@ public class a_view : MonoBehaviour {
 
         if (a_controller.AccessToModel.Still_alive == false)
         {
-            if (!a_controller.AccessToModel.IsPressed)
+            if (!a_controller.AccessToModel.IsPressed || a_controller.AccessToModel.Time <= 0)
             {
+                GameObject.FindWithTag("fotos").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("leftleg");
+
                 //instantieer een nieuwe button (enkel hier toepasbaar door GUI laag enkel 1 maal bereikbaar
-<<<<<<< HEAD
-                if (GUI.Button(new Rect(300, 200, 200, 100), "Play Again"))
-=======
                 if (GUI.Button(new Rect(500, 400, 200, 100), "Play Again"))
->>>>>>> c456146b95437cd5f8a02c3514fe20a0030bf983
                 {
                     a_controller.AccessToController.GenerateRandomWord();
                     a_controller.AccessToController.CounterZero();
